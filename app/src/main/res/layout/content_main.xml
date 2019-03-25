@@ -14,9 +14,9 @@
         android:layout_marginTop="56dp"
         android:fontFamily="@font/nunito"
         android:textColor="@color/colorAccent"
-        android:textSize="24sp"/>
+        android:textSize="24sp" />
 
-    <com.ticktacktock.tictactoe.customView.TicTacToeView
+    <com.ticktacktock.tictactoe.TicTacToeView
         android:id="@+id/ticTacToeView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -26,16 +26,17 @@
 
     <Button
         android:id="@+id/resetButton"
-        style="@style/Widget.AppCompat.Button.Borderless"
+        style="@style/Widget.MaterialComponents.Button.TextButton.Icon"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="bottom|center"
         android:layout_marginBottom="48dp"
         android:fontFamily="@font/nunito"
-        android:text="Reset"
+        android:text="Play Again"
+        android:textAllCaps="true"
         android:textColor="@color/colorAccent"
         android:textSize="18dp"
         android:visibility="gone"
-        tools:visibility="visible"/>
+        tools:visibility="visible" />
 
 </FrameLayout>

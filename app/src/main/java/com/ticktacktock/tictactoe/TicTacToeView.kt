@@ -1,4 +1,4 @@
-package com.ticktacktock.tictactoe.customView
+package com.ticktacktock.tictactoe
 
 import android.animation.ValueAnimator
 import android.content.Context
@@ -8,7 +8,6 @@ import android.support.v4.content.res.ResourcesCompat
 import android.util.AttributeSet
 import android.view.MotionEvent
 import android.view.View
-import com.ticktacktock.tictactoe.R
 
 
 /**

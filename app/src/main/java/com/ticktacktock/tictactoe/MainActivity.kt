@@ -1,21 +1,21 @@
-package com.ticktacktock.tictactoe.ui
+package com.ticktacktock.tictactoe
 
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import android.view.View
-import com.ticktacktock.tictactoe.R
-import com.ticktacktock.tictactoe.TicTacToe
-import com.ticktacktock.tictactoe.customView.TicTacToeView
 import kotlinx.android.synthetic.main.content_main.*
 
-class MainActivity : AppCompatActivity(), TicTacToe.TicTacToeListener, TicTacToeView.SquarePressedListener {
-    lateinit var ticTacToe: TicTacToe
+class MainActivity : AppCompatActivity(), Logic.TicTacToeListener2, TicTacToeView.SquarePressedListener {
+//    lateinit var ticTacToe: TicTacToe
+    lateinit var ticTacToe: Logic
+
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.content_main)
-        ticTacToe = TicTacToe()
+//        ticTacToe = TicTacToe()
+        ticTacToe = Logic()
         ticTacToe.setTicTacToeListener(this)
         ticTacToeView.squarePressListener = this
 
@@ -31,7 +31,7 @@ class MainActivity : AppCompatActivity(), TicTacToe.TicTacToeListener, TicTacToe
     }
 
     override fun movedAt(x: Int, y: Int, z: Int) {
-        if (z == TicTacToe.BoardState.MOVE_X)
+        if (z == Logic.Companion.MOVE_X)
             ticTacToeView.drawXAtPosition(x, y)
         else
             ticTacToeView.drawOAtPosition(x, y)
@@ -51,10 +51,12 @@ class MainActivity : AppCompatActivity(), TicTacToe.TicTacToeListener, TicTacToe
         resetButton.visibility = View.GONE
     }
 
-    override fun gameWonBy(boardPlayer: TicTacToe.BoardPlayer, winCoords: Array<TicTacToe.SquareCoordinates>) {
+    override fun gameWonBy(boardPlayer: Logic.BoardPlayer, winCoords: Array<Logic.Companion.SquareCoordinates>?) {
         information.visibility = View.VISIBLE
-        information.text = "Winner is ${if (boardPlayer.move == TicTacToe.BoardState.MOVE_X) "X" else "O"}"
-        ticTacToeView.animateWin(winCoords[0].i, winCoords[0].j, winCoords[2].i, winCoords[2].j)
+        information.text = "Winner is ${if (boardPlayer.move == Logic.Companion.MOVE_X) "X" else "O"}"
+        if (winCoords != null) {
+            ticTacToeView.animateWin(winCoords[0].i, winCoords[0].j, winCoords[2].i, winCoords[2].j)
+        }
         ticTacToeView.isEnabled = false
         resetButton.visibility = View.VISIBLE
     }
